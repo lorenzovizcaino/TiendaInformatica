@@ -5,5 +5,6 @@ sealed class Screens(val route:String){
 
 
     object ProductosShow: Screens("pantalla1")//info a aparecer en pantalla
+    object ResumenCompra: Screens("pantalla2")//info a aparecer en pantalla
 
 }
