@@ -7,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -50,10 +51,10 @@ fun ResumenCompra(navController: NavHostController, viewModel: TiendaInformatica
         Card(border = BorderStroke(2.dp, Color.Green),modifier = Modifier
             .fillMaxWidth()
             .height(60.dp)
-            .align(Alignment.CenterHorizontally)
+
             .padding(horizontal = 5.dp, vertical = 4.dp)) {
-            Row(horizontalArrangement = Arrangement.Center){
-                Text(text = "TOTAL",modifier= Modifier.weight(3f), textAlign = TextAlign.Center)
+            Row(horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically){
+                Text(text = "TOTAL",modifier= Modifier.weight(3f).padding(top=15.dp), textAlign = TextAlign.Center, fontWeight = FontWeight.Bold)
                 Text(text = viewModel.sumaProductos.toString()+"€",
                     color = Color.Green,
 
@@ -63,7 +64,7 @@ fun ResumenCompra(navController: NavHostController, viewModel: TiendaInformatica
                     modifier = Modifier
 
                         .weight(1f)
-                        .padding(end = 5.dp), fontSize = 18.sp)
+                        .padding(end = 5.dp,top=15.dp), fontSize = 18.sp)
             }
             
 
@@ -106,7 +107,9 @@ fun ItemProductoComprado(viewModel: TiendaInformaticaViewModel, producto: Produc
                 )
                 Text(
                     text = producto.nombre,
-                    fontSize = 14.sp
+                    modifier =Modifier.defaultMinSize(minHeight = 10.dp),
+                    fontSize = 14.sp,
+
                 )
 
 

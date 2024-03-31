@@ -108,7 +108,7 @@ fun MyTopBar(navController: NavHostController, viewModel: TiendaInformaticaViewM
                 }
 
             },
-            title = { Text(/*"${viewModel.email}"*/" Nombre Usuario", color = Color.White) },
+            title = { Text("${viewModel.email}", color = Color.White) },
             actions = {
 
                 IconButton(onClick = {
