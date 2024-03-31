@@ -232,9 +232,12 @@ fun ItemProducto(
                     if (isChecked) {
                         viewModel.sumarProductos(producto.precio)
                         viewModel.sumarUnidadesProductos()
+                        viewModel.listaComprar.add(producto)
+
                     } else {
                         viewModel.restarProductos(producto.precio)
                         viewModel.restarUnidadesProductos()
+                        viewModel.listaComprar.remove(producto)
                     }
 
 
