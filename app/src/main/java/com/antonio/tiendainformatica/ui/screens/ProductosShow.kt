@@ -50,6 +50,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -101,14 +102,14 @@ fun MyTopBar(navController: NavHostController, viewModel: TiendaInformaticaViewM
                 IconButton(onClick = {}) {
                     Icon(
                         imageVector = Icons.Filled.AccountCircle,
-                        contentDescription = "Ir hacia atras",
+                        contentDescription = "cuenta cliente",
                         tint = Color.White,
 
                     )
                 }
 
             },
-            title = { Text("${viewModel.email}", color = Color.White) },
+            title = { Text(" ${viewModel.email}", color = Color.White) },
             actions = {
 
                 IconButton(onClick = {
@@ -203,7 +204,8 @@ fun ItemProducto(
             )
             Text(
                 text = producto.nombre,
-                modifier = Modifier.align(Alignment.CenterHorizontally), fontSize = 14.sp
+                style = TextStyle(lineHeight = 16.sp),
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(horizontal = 5.dp), fontSize = 14.sp
             )
 
 
