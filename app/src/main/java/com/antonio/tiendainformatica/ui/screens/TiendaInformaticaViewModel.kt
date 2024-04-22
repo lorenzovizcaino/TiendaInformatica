@@ -7,14 +7,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import com.antonio.tiendainformatica.R
+import com.antonio.tiendainformatica.ui.model.Login
 import com.antonio.tiendainformatica.ui.model.Productos
 import java.text.DecimalFormat
 
 class TiendaInformaticaViewModel : ViewModel() {
-    var email by mutableStateOf("lorenzovizcaino@gmail.com")
+    var email by mutableStateOf("")
         private set
 
-    var password by mutableStateOf("1212121212")
+    var password by mutableStateOf("")
         private set
 
     var loginenabled by mutableStateOf(false)
@@ -29,8 +30,20 @@ class TiendaInformaticaViewModel : ViewModel() {
     var productoSelecionado by mutableStateOf(false)
         private set
 
+    var usuarioCorrecto by mutableStateOf(false)
+        private set
+
+
+
 //    var backgroundColorCard by mutableStateOf(Color.LightGray)
 //        private set
+
+    var listaLogin= mutableListOf<Login>(
+        Login("lorenzovizcaino@gmail.com","123QWEasd"),
+        Login("juanvaldes@gmail.com","juanvaldes"),
+        Login("anacamino@yahoo.es","anacamino")
+
+    )
 
     var lista = mutableListOf<Productos>(
         Productos("Placa Base", "MSI PRO Z790-A MAX WIFI", 272.99, R.drawable.msi_pro_z790, false),
@@ -130,6 +143,10 @@ class TiendaInformaticaViewModel : ViewModel() {
 
     fun getloginenabled(loginenabled: Boolean) {
         this.loginenabled = Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length > 6
+    }
+
+    fun getusuarioCorrecto(usuarioCorrecto: Boolean){
+        this.usuarioCorrecto=usuarioCorrecto;
     }
 
     fun getProductoSelecionado(productoSelecionado: Boolean) {

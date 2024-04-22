@@ -1,6 +1,7 @@
 package com.antonio.tiendainformatica.ui.screens
 
 import android.app.Activity
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -115,7 +116,7 @@ fun Body(modifier: Modifier, viewModel: TiendaInformaticaViewModel, navControlle
         ForgotPassword()
         Spacer(modifier = Modifier.size(16.dp))
 
-        LoginButton(viewModel.loginenabled, navController, modifier)
+        LoginButton(viewModel, navController, modifier)
         Spacer(modifier = Modifier.size(16.dp))
 
 
@@ -130,10 +131,29 @@ fun Body(modifier: Modifier, viewModel: TiendaInformaticaViewModel, navControlle
 
 
 @Composable
-fun LoginButton(loginenabled: Boolean, navController: NavController, modifier: Modifier) {
+fun LoginButton(viewModel: TiendaInformaticaViewModel, navController: NavController, modifier: Modifier) {
+    var context= LocalContext.current
     Button(
-        onClick = {navController.navigate(route = Screens.ProductosShow.route)},
-        enabled = loginenabled,
+        onClick = {
+            viewModel.listaLogin.forEach{ item ->
+                if(item.email.equals(viewModel.email) && item.password.equals(viewModel.password)){
+                    viewModel.getusuarioCorrecto(true)
+                }
+
+
+        }
+            if(viewModel.usuarioCorrecto){
+                viewModel.getusuarioCorrecto(false)
+                navController.navigate(route = Screens.ProductosShow.route)
+
+            }else{
+
+                Toast.makeText(context,"Usuario no recococido",Toast.LENGTH_SHORT).show()
+            }
+
+
+                  },
+        enabled = viewModel.loginenabled,
         modifier = modifier,
         shape = RectangleShape,
         colors = ButtonDefaults.buttonColors(
