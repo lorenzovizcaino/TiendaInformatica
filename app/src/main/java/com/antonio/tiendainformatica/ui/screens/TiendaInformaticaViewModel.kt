@@ -46,69 +46,79 @@ class TiendaInformaticaViewModel : ViewModel() {
     )
 
     var lista = mutableListOf<Productos>(
-        Productos("Placa Base", "MSI PRO Z790-A MAX WIFI", 272.99, R.drawable.msi_pro_z790, false),
+        Productos("Placa Base", "MSI PRO Z790-A MAX WIFI", 272.99, R.drawable.msi_pro_z790, false,6),
         Productos(
             "Procesador",
             "Intel Core i5-12400F 2.5 GHz",
             136.98,
             R.drawable.intel_core_i5_12400f,
-            false
+            false,
+            3
+
         ),
         Productos(
             "Disco Duro",
             "Seagate BarraCuda 3.5\" 2TB",
             66.99,
             R.drawable.seagate_barracuda_2tb,
-            false
+            false,
+            0
         ),
         Productos(
             "Tarjeta Grafica",
             "MSI GeForce RTX 4060 Ti GAMING X 16GB",
             529.65,
             R.drawable.msi_geforce_rtx4060,
-            false
+            false,
+            10
         ),
         Productos(
             "Memoria Ram",
             "Corsair Vengeance RGB DDR5 White 5600MHz 64GB",
             241.45,
             R.drawable.corsair_vengeance_ddr5,
-            false
+            false,
+            5
         ),
         Productos(
             "Tarjeta Sonido",
             "Creative Sound BlasterX AE-5 Plus",
             107.99,
             R.drawable.creative_sound_blaster,
-            false
+            false,
+            6
         ),
         Productos(
             "Cajas PC",
             "Forgeon Arcanite ARGB Mesh Torre ATX Negra",
             159.99,
             R.drawable.torre_forgeon_arcanite,
-            false
+            false,
+            0
         ),
         Productos(
             "Fuente alimentación",
             "Nox Hummer GD750 750W 80 Plus Gold",
             91.98,
             R.drawable.nox_hummer_gd750,
-            false
+            false,
+            45
         ),
         Productos(
             "Ventilador CPU",
             "Forgeon Solarian Cooler 4Pipes 120mm",
             59.99,
             R.drawable.forgeon_solarian,
-            false
+            false,
+            2
         ),
         Productos(
             "Monitor",
             "ASUS ROG Swift PG42UQ 41.5\" OLED",
             920.48,
             R.drawable.asus_rog_monitor,
-            false
+            false,
+            3
         ),
     )
         private set

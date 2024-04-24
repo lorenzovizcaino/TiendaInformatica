@@ -7,5 +7,7 @@ data class Productos(
     var nombre:String,
     var precio:Double,
     @DrawableRes var foto:Int,
-    var selecionado:Boolean
+    var selecionado:Boolean,
+    var stock:Int
+
 )

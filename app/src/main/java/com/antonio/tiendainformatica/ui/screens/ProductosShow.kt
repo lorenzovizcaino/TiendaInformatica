@@ -7,7 +7,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 
@@ -176,6 +178,7 @@ fun ItemProducto(
 ) {
     var isChecked by remember { mutableStateOf(producto.selecionado) }
     var backgroundColor by remember { mutableStateOf(Color.LightGray) }
+    var verStock by remember { mutableStateOf(false) }
     backgroundColor = if (producto.selecionado) {
         Color.Green
     } else {
@@ -205,7 +208,9 @@ fun ItemProducto(
             Text(
                 text = producto.nombre,
                 style = TextStyle(lineHeight = 16.sp),
-                modifier = Modifier.align(Alignment.CenterHorizontally).padding(horizontal = 5.dp), fontSize = 14.sp
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(horizontal = 5.dp), fontSize = 14.sp
             )
 
 
@@ -217,33 +222,50 @@ fun ItemProducto(
                     .align(Alignment.CenterHorizontally)
                     .padding(10.dp), fontSize = 20.sp
             )
-            Checkbox(
-                modifier = Modifier
-
-                    .align(Alignment.CenterHorizontally),
-                colors = CheckboxDefaults.colors(
-                    checkedColor = Color.White,
-                    uncheckedColor = Color.Red,
-                    checkmarkColor = Color.Red
-
-                ),
-                checked = isChecked,
-                onCheckedChange = {
-                    isChecked = it
-                    producto.selecionado=isChecked
-                    if (isChecked) {
-                        viewModel.sumarProductos(producto.precio)
-                        viewModel.sumarUnidadesProductos()
-                        viewModel.listaComprar.add(producto)
-
-                    } else {
-                        viewModel.restarProductos(producto.precio)
-                        viewModel.restarUnidadesProductos()
-                        viewModel.listaComprar.remove(producto)
-                    }
+            Row (Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center){
 
 
-                })
+                    Checkbox(
+
+                        colors = CheckboxDefaults.colors(
+                            checkedColor = Color.White,
+                            uncheckedColor = Color.Red,
+                            checkmarkColor = Color.Red
+
+                        ),
+                        enabled= producto.stock>0
+                        ,
+                        checked = isChecked,
+                        onCheckedChange = {
+                            isChecked = it
+                            producto.selecionado=isChecked
+                            if (isChecked) {
+                                viewModel.sumarProductos(producto.precio)
+                                viewModel.sumarUnidadesProductos()
+                                viewModel.listaComprar.add(producto)
+
+                            } else {
+                                viewModel.restarProductos(producto.precio)
+                                viewModel.restarUnidadesProductos()
+                                viewModel.listaComprar.remove(producto)
+                            }
+
+
+                        })
+
+
+                    Text(
+                        text = if (producto.stock < 1) {
+                            "Sin Stock"
+                        }else{
+                            ""
+                        }
+                    )
+
+
+
+            }
+
 
 
         }
